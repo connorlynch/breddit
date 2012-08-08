@@ -1,0 +1,26 @@
+<%= stylesheet_link_tag "main"%>
+<%= image_tag("breddit-logo-merged.png", :width => 100) %>
+
+<h1>breddit</h1>
+
+
+
+<% @recipes.each do |recipe| %>
+  <ul>
+    <li><%= link_to recipe.title, "/recipes/#{recipe.id}" %></li>
+    <li><%= image_tag(recipe.url, :width => 200) %></li>
+    <li><%= recipe.ingredients %></li>
+    <li><%= recipe.body %></li>
+    <li><%= recipe.counter %></li>
+	<tr>
+    	<td><%= link_to 'Show', recipe %></td>
+    	<td><%= link_to 'Edit', edit_recipe_path(recipe) %></td>
+    	<td><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	</tr>
+  </ul>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Recipe', new_recipe_path %>
